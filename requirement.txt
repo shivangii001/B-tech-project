@@ -1,0 +1,38 @@
+Requirements:   
+Pillow==6.0.0
+matplotlib==3.1.0 
+libtiff
+numpy==1.16.4
+scipy==1.2.0
+pandas==0.24.2
+sympy==1.4
+glob2
+glob3
+opencv-python==4.1.0.25
+scikit-learn
+scikit-image==0.15.0
+tensorflow-gpu==1.4.0
+Keras==2.1.3 
+
+
+Training.ipynb includes the Python code for training the algorithm with U-Net architecture.
+
+If you need to use the pre-trained weights, change the name of the .h5 (weights file) file to match the 
+name of the weights file you have downloaded where ever required.
+model_onehot.h5 contains the pre-trained weights.
+
+Testing.ipynb includes the PythonCode for Testing, calculating accuracies, calculating confusion matrices for 
+training and validation and saving predictions by the U-Net model on testing images.
+
+You might get an error: xrange is not defined while running our code. This error is not due to errors in our code 
+but due to not up to date python package named libtiff (some parts of the source code of the package are in python2 
+and some are in python3) which we used to read the dataset which in which the images are in .tif format. We were 
+not able to use other libraries like openCV or PIL to read the images as they are not properly supporting to 
+read the 4-channel .tif images.
+
+This error can be resolved by editing the source code of the libtiff library.
+
+Replace and save the libtiff ctype file with the file in 
+
+https://raw.githubusercontent.com/pearu/pylibtiff/master/libtiff/libtiff_ctypes.py
+
